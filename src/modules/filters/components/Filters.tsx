@@ -1,26 +1,27 @@
 import { useId } from 'react'
-import { useFilters } from '../hooks/useFilters'
-import { type Filter } from '../types.d'
+//import { useFilters } from '../../../hooks/useFilters'
+import { useAppSelector } from '../../../hooks/store'
+import { useFiltersActions } from '../hooks/useFiltersActions'
 
 export function Filters() {
-  const { filters, setFilters } = useFilters()
+  //const { filters, setFilters } = useFilters()
+  const filters = useAppSelector((state) => state.filters)
+  const { setCategoryAction, setMinPriceAction } = useFiltersActions()
 
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
 
   const handleChangeMinPrice = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMinPrice = Number(event.target.value)
-    setFilters((prevState: Filter) => ({
-      ...prevState,
-      minPrice: newMinPrice,
-    }))
+
+    setMinPriceAction(newMinPrice)
   }
 
   const handleChangeCategory = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const newCategory = event.target.value
-    setFilters((prevState: Filter) => ({ ...prevState, category: newCategory }))
+    setCategoryAction(newCategory)
   }
 
   return (

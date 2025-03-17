@@ -1,5 +1,5 @@
 import logo from '../assets/logo-hardtech-colombia-2.png'
-import { Filters } from './Filters'
+import { Filters } from '../modules/filters/components/Filters'
 
 export function Header() {
   return (

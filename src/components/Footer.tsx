@@ -1,6 +1,7 @@
 export function Footer() {
   // const { filters } = useFilters()
   // const { cart } = useCart()
+  // const cart = useAppSelector((state) => state.cart)
 
   return (
     <footer className="fixed left-4 bottom-4 bg-black/70 text-white text-left px-6 py-2 rounded-full opacity-95 backdrop-blur-md">

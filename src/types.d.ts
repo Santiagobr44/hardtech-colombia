@@ -1,4 +1,4 @@
-export interface CartItem {
+export interface CartItemType {
   product: Product
   quantity: number
 }
@@ -17,22 +17,6 @@ export interface FiltersProviderType {
   children: React.ReactNode
 }
 
-interface CartContextType {
-  cart: CartItem[]
-  addToCart: (product: Product) => void
-  removeFromCart: (product: Product) => void
-  clearCart: () => void
-}
-
-interface CartProviderType {
-  children: React.ReactNode
-}
-
-export type cartActionType =
-  | { type: 'ADD_TO_CART'; payload: Product }
-  | { type: 'REMOVE_FROM_CART'; payload: Product }
-  | { type: 'CLEAR_CART' }
-
 declare module './config.js' {
   export const IS_DEVELOPMENT: boolean
 }
@@ -48,7 +32,7 @@ export interface Product {
   id: number
   title: string
   description: string
-  category: Category
+  category: string
   price: number
   discountPercentage: number
   rating: number
@@ -60,14 +44,13 @@ export interface Product {
   dimensions: Dimensions
   warrantyInformation: string
   shippingInformation: string
-  availabilityStatus: AvailabilityStatus
+  availabilityStatus: string
   reviews: Review[]
-  returnPolicy: ReturnPolicy
+  returnPolicy: string
   minimumOrderQuantity: number
   meta: Meta
   images: string[]
   thumbnail: string
-  quantity?: number
 }
 
 export enum AvailabilityStatus {
@@ -90,8 +73,8 @@ export interface Dimensions {
 }
 
 export interface Meta {
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
   barcode: string
   qrCode: string
 }
@@ -107,7 +90,7 @@ export enum ReturnPolicy {
 export interface Review {
   rating: number
   comment: string
-  date: Date
+  date: string
   reviewerName: string
   reviewerEmail: string
 }
