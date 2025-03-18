@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FiX } from 'react-icons/fi'
 import { CartIcon, ClearCartIcon } from '../../../components/Icons'
 import { useAppSelector } from '../../../hooks/store'
 import { useCartActions } from '../hooks/useCartActions'
@@ -14,16 +15,14 @@ export function Cart() {
   return (
     <>
       {/* Botón flotante para abrir el carrito */}
-      {!isOpen && (
-        <button
-          type="button"
-          className="fixed top-6 right-6 bg-gray-800 hover:bg-gray-900 p-3 rounded-full shadow-lg transition-transform transform hover:scale-110 text-white cursor-pointer z-50"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Abrir carrito"
-        >
-          <CartIcon />
-        </button>
-      )}
+      <button
+        type="button"
+        className="flex flex-row gap-1 items-center justify-center bg-gray-800 hover:bg-gray-900 p-3 rounded-full shadow-lg transition-transform transform hover:scale-110 text-white cursor-pointer z-50"
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="Abrir carrito"
+      >
+        <CartIcon /> Carrito
+      </button>
 
       {/* Overlay oscuro cuando el carrito está abierto */}
       {isOpen && (
@@ -63,7 +62,7 @@ export function Cart() {
               onClick={() => setIsOpen(false)}
               aria-label="Cerrar carrito"
             >
-              ✕
+              <FiX />
             </button>
             {/* Título del carrito */}
             <h2

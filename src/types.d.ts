@@ -3,20 +3,6 @@ export interface CartItemType {
   quantity: number
 }
 
-export interface Filter {
-  category: Category
-  minPrice: number
-}
-
-export interface FiltersContextType {
-  filters: Filter
-  setFilters: React.Dispatch<React.SetStateAction<Filter>>
-}
-
-export interface FiltersProviderType {
-  children: React.ReactNode
-}
-
 declare module './config.js' {
   export const IS_DEVELOPMENT: boolean
 }

@@ -1,3 +1,4 @@
+import { navigate } from 'wouter/use-browser-location'
 import { AddToCartIcon, RemoveFromCartIcon } from '../../../components/Icons'
 import { useAppSelector } from '../../../hooks/store'
 import { Product } from '../../../types.d'
@@ -14,8 +15,11 @@ export function ProductCard({ product }: ProductCardProps) {
   const isInCart = cart.some((item) => item.product.id === product.id)
 
   return (
-    <li className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform hover:scale-105 flex flex-col items-center">
-      <a href="#" className="block w-full">
+    <li className="bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 ease-in-out hover:scale-[1.02] flex flex-col items-center">
+      <a
+        className="block w-full cursor-pointer"
+        onClick={() => navigate(`/product/${product.id}`)}
+      >
         <img
           src={product.thumbnail}
           alt={product.title}

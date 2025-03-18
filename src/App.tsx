@@ -1,20 +1,17 @@
 import { Toaster } from 'sonner'
+import { Route, Switch } from 'wouter'
 import './App.css'
-import { Footer } from './components/Footer'
-import { Header } from './components/Header'
-import { Products } from './modules/Products/components/Products'
+import { HomePage } from './components/HomaPage'
+import ProductDetailPage from './modules/Products/components/ProductDetailPage'
 //import { IS_DEVELOPMENT } from './config.js'
-import { Cart } from './modules/cart/components/Cart'
 
 function App() {
   return (
-    <>
-      <Header />
-      <Cart />
-      <Products />
-      <Footer />
+    <Switch>
+      <Route path="/" component={HomePage}></Route>
+      <Route path="/product/:id" component={ProductDetailPage} />
       <Toaster richColors />
-    </>
+    </Switch>
   )
 }
 
